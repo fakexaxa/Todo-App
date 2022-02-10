@@ -48,7 +48,7 @@ class ListFragment : Fragment() {
         }
     }
 
-    private fun editClicked(todo: Todo) {
+    private fun editClicked(todo: Todo) = with(binding){
         // do something...
     }
 

@@ -41,4 +41,8 @@ class TodoViewModel(app: Application) : AndroidViewModel(app) {
     fun updateFilter(option: FilterOption) {
         filterFlow.value = option
     }
+
+    fun closeEdit() {
+        TODO("Not yet implemented")
+    }
 }
