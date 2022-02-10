@@ -18,6 +18,10 @@ interface TodoDao {
     @Query("SELECT * FROM todo WHERE isComplete IN (:complete)")
     fun getTodos(complete: Boolean): Flow<List<Todo>>
 
+    // return item that matches the id passed in
+    @Query("SELECT * FROM todo WHERE id IN (:ID)")
+    fun getTodo(ID: Int): Todo
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(todo: Todo)
 

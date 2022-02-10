@@ -25,4 +25,9 @@ class TodoRepo(private val todoDao: TodoDao) {
         todoDao.insert(todo)
     }
 
+    // get a single todo
+    fun getSingleTodo(ID: Int) : Todo{
+        return todoDao.getTodo(ID)
+    }
+
 }
