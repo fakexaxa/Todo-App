@@ -1,4 +1,4 @@
-package com.example.feature_todo
+package com.example.feature_todo.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.example.feature_todo.viewmodel.TodoViewModel
 import com.example.feature_todo.adapter.TodoAdapter
 import com.example.feature_todo.databinding.FragmentListBinding
 import com.example.model_todo.response.Todo
@@ -53,6 +55,8 @@ class ListFragment : Fragment() {
     }
 
     private fun todoClicked(todo: Todo) {
-        // do something...
+        binding.rvTodos.setOnClickListener{
+
+        }
     }
 }
