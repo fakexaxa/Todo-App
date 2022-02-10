@@ -8,5 +8,22 @@
         android:id="@+id/listFragment"
         android:name="com.example.feature_todo.ListFragment"
         android:label="fragment_list"
-        tools:layout="@layout/fragment_list" />
+        tools:layout="@layout/fragment_list">
+        <action
+            android:id="@+id/action_listFragment_to_editFragment"
+            app:destination="@id/editFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/editFragment"
+        android:name="com.example.feature_todo.EditFragment"
+        android:label="fragment_list"
+        tools:layout="@layout/fragment_edit" >
+        <action
+            android:id="@+id/action_todo_graph_to_listFragment"
+            app:destination="@id/listFragment" />
+        <argument
+            android:name="ID"
+            app:argType="string" />
+    </fragment>
 </navigation>
