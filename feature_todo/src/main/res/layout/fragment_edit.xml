@@ -7,4 +7,39 @@
     android:fitsSystemWindows="true"
     tools:context="com.example.feature_todo.EditFragment">
 
+    <EditText
+        android:id="@+id/title"
+        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:hint="@string/edit_title"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@id/content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:autofillHints="Title" />
+    <EditText
+        android:id="@+id/content"
+        android:layout_height="150dp"
+        android:layout_width="match_parent"
+        android:hint="@string/edit_content"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@id/checkbox"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:autofillHints="Title" />
+
+    <CheckBox
+        android:id="@+id/checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:checked="false"
+        android:text="@string/completed"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
