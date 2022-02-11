@@ -22,11 +22,11 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 
 @ExperimentalCoroutinesApi
-class ListFragment : Fragment(){
+class ListFragment : Fragment(),TodoViewHolder.OnItemClickListener{
 
     private var _binding: FragmentListBinding? = null
     private val binding get() = _binding!!
-    private val todoAdapter by lazy { TodoAdapter(::editClicked, ::todoClicked) }
+    private val todoAdapter by lazy { TodoAdapter(::editClicked, ::todoClicked,this) }
     private val todoViewModel by activityViewModels<TodoViewModel>()
 
     private var mActionMode: ActionMode? = null
@@ -68,7 +68,7 @@ class ListFragment : Fragment(){
         itemTouchHelper.attachToRecyclerView(rvTodos)
     }
 
-    private fun editClicked(todo: Todo) {
+    private fun editClicked(todo: Todo): Unit {
         // do something...
     }
 
@@ -86,6 +86,14 @@ class ListFragment : Fragment(){
             }
         }
         return swipeCallBack
+    }
+
+    override fun onItemClick(isSelected: Boolean, todo:Todo) {
+        if(isSelected){
+            binding.toolbar.setOnClickListener{
+                todoViewModel.delete(todo)
+            }
+        }
     }
 
 

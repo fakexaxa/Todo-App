@@ -11,14 +11,13 @@ import com.example.todo.util.listen
 class TodoAdapter(
     private val editClicked: (Todo) -> Unit,
     private val todoClicked: (Todo) -> Unit,
-
+    private val listener : TodoViewHolder.OnItemClickListener
 ) : ListAdapter<Todo, TodoViewHolder>(TodoDiffUtil) {
-
 
 
     override fun onCreateViewHolder(
         parent: ViewGroup, viewType: Int
-    ) = TodoViewHolder.newInstance(parent, editClicked).listen { position, _ ->
+    ) = TodoViewHolder.newInstance(parent, editClicked,listener).listen { position, _ ->
         todoClicked(getItem(position))
     }
 
@@ -26,4 +25,5 @@ class TodoAdapter(
         holder.bindTodo(getItem(position))
 
     }
+
 }
