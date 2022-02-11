@@ -3,6 +3,7 @@ package com.example.feature_todo
 import android.os.Bundle
 import android.text.Editable
 import android.text.SpannableStringBuilder
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
@@ -24,6 +25,7 @@ class EditFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewModel by viewModels<TodoViewModel>()
     private val args by navArgs<EditFragmentArgs>()
+    val TAG = "edit"
 
 
     override fun onCreateView(
@@ -40,6 +42,7 @@ class EditFragment : Fragment() {
         getTodo()
     }.root
 
+        // watch for changes in state
     private fun initObservers()= with(viewModel) {
         viewState.observe(viewLifecycleOwner){state ->
             if (state is ViewState.Success) handleSuccess(state.todo)
@@ -47,15 +50,19 @@ class EditFragment : Fragment() {
         }
     }
 
+    // if fails display toast
     private fun handleError(e: String) {
         Toast.makeText(context, e, Toast.LENGTH_SHORT).show()
     }
 
+    // if successful display todos info
     private fun handleSuccess(todo: Todo)= with(binding) {
         val editableTitle: Editable = SpannableStringBuilder(todo.title)
         val editableContent: Editable = SpannableStringBuilder(todo.content)
+
         title.text = editableTitle
         content.text = editableContent
+
     }
 
     // show current todos info
@@ -75,17 +82,23 @@ class EditFragment : Fragment() {
         save.setOnClickListener{updateTodo()}
     }
 
+    // delete todos
     private fun deleteTodo() {
         val id = args.id
         viewModel.deleteSingleTodo(id)
+        closeEdit()
+
     }
 
     // update todos
     private fun updateTodo() {
         val id = args.id
-        val title = binding.title.toString()
-        val content = binding.content.toString()
+        val title = binding.title.text.toString()
+        val content = binding.content.text.toString()
+        Log.e(TAG, "updateTodo: $id \n $title \n $context", )
+
         viewModel.saveEdit(id, title, content)
+        closeEdit()
     }
 
     // go back to main page
@@ -93,6 +106,5 @@ class EditFragment : Fragment() {
         val action =
             EditFragmentDirections.actionEditFragmentToListFragment()
         findNavController().navigate(action)
-        println("close was pressed")
     }
 }
