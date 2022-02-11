@@ -8,19 +8,5 @@
     <include-dynamic
         android:id="@+id/todoGraph"
         app:graphResName="todo_graph"
-        app:moduleName="feature_todo" >
-        <action
-            android:id="@+id/action_todoGraph_to_newTodo"
-            app:destination="@id/newTodo" />
-    </include-dynamic>
-    <fragment
-        android:id="@+id/newTodo"
-        android:name="com.example.feature_todo.fragments.NewTodo"
-        app:moduleName="Todo.feature_todo"
-        android:label="todo_new"
-        tools:layout="@layout/todo_new" >
-        <action
-            android:id="@+id/action_newTodo_to_todoGraph"
-            app:destination="@id/todoGraph" />
-    </fragment>
+        app:moduleName="feature_todo" />
 </navigation>

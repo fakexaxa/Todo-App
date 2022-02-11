@@ -18,6 +18,8 @@ class TodoViewHolder(
         rbIsComplete.setBackgroundColor(if (todo.isComplete) Color.GREEN else Color.LTGRAY)
         color.setBackgroundColor(todo.color)
         tvEdit.setOnClickListener { editClicked(todo) }
+
+
     }
 
     companion object {
