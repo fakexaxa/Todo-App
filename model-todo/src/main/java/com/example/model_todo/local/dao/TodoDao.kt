@@ -1,9 +1,6 @@
 package com.example.model_todo.local.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.example.model_todo.response.Todo
 import kotlinx.coroutines.flow.Flow
 import retrofit2.http.DELETE
@@ -36,6 +33,6 @@ interface TodoDao {
     @Query("DELETE FROM todo WHERE id IN (:id)")
     suspend fun deleteTodo(id: Int)
 
-
-
+    @Delete
+    suspend fun delete(todo: Todo)
 }

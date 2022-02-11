@@ -10,6 +10,9 @@
         android:label="fragment_list"
         tools:layout="@layout/fragment_list">
         <action
+            android:id="@+id/action_listFragment_to_newTodo"
+            app:destination="@id/newTodo" />
+        <action
             android:id="@+id/action_listFragment_to_editFragment"
             app:destination="@id/editFragment" />
     </fragment>
@@ -25,5 +28,16 @@
         <argument
             android:name="id"
             app:argType="string" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/newTodo"
+        android:name="com.example.feature_todo.fragments.NewTodo"
+        android:label="todo_new"
+        tools:layout="@layout/todo_new" >
+
+        <action
+            android:id="@+id/action_newTodo_to_listFragment"
+            app:destination="@id/listFragment" />
     </fragment>
 </navigation>

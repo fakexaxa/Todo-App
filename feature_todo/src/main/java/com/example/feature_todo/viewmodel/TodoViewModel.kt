@@ -21,6 +21,7 @@ class TodoViewModel(app: Application) : AndroidViewModel(app) {
         TodoRepo(TodoDatabase.getDatabase(app, viewModelScope).todoDao())
     }
 
+
     private val filterFlow = MutableStateFlow(FilterOption.ALL)
 
     // Using LiveData and caching what allWords returns has several benefits:
@@ -56,8 +57,10 @@ class TodoViewModel(app: Application) : AndroidViewModel(app) {
     fun deleteSingleTodo(id: Int) {
         viewModelScope.launch {
             todoRepo.deleteSingleTodo(id)
-        }
+        }}
 
+    fun delete(todo: Todo)=viewModelScope.launch {
+        todoRepo.deleteTodo(todo)
     }
 
 }

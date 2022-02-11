@@ -10,4 +10,6 @@
     <string name="close_detail_page">close detail page</string>
     <string name="delete_todo">delete todo</string>
     <string name="save_btn">save btn</string>
+    <string name="add_description">add description</string>
+    <string name="add_todo">add todo</string>
 </resources>

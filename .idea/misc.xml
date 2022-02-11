@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+<<<<<<< HEAD
         <entry key="feature_todo/src/main/res/layout/fragment_edit.xml" value="0.125" />
         <entry key="feature_todo/src/main/res/layout/fragment_list.xml" value="0.19610507246376813" />
         <entry key="feature_todo/src/main/res/layout/item_todo.xml" value="0.19610507246376813" />
@@ -10,6 +11,14 @@
         <entry key="feature_todo/src/main/res/layout/todo_new.xml" value="0.1" />
 =======
 >>>>>>> Stashed changes
+=======
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.14583333333333334" />
+        <entry key="app/src/main/res/menu/main_menu.xml" value="0.14583333333333334" />
+        <entry key="feature_todo/src/main/res/layout/fragment_list.xml" value="0.10054347826086957" />
+        <entry key="feature_todo/src/main/res/layout/item_todo.xml" value="0.10054347826086957" />
+        <entry key="feature_todo/src/main/res/layout/todo_new.xml" value="0.14583333333333334" />
+        <entry key="feature_todo/src/main/res/menu/main_menu.xml" value="0.2953125" />
+>>>>>>> 8f4d90ca54e1f810f024489ae9381fa6c8288a66
       </map>
     </option>
   </component>

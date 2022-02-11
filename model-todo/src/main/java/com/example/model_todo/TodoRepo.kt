@@ -24,6 +24,9 @@ class TodoRepo(private val todoDao: TodoDao) {
     suspend fun insert(todo: Todo) {
         todoDao.insert(todo)
     }
+    suspend fun deleteTodo(todo: Todo){
+        todoDao.delete(todo)
+    }
 
     // get a single todos
     fun getSingleTodo(ID: Int) : Todo{
