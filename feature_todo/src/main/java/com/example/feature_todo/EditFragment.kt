@@ -5,11 +5,13 @@ import android.text.Editable
 import android.text.SpannableStringBuilder
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.feature_todo.databinding.FragmentEditBinding
+import com.example.feature_todo.util.ViewState
 import com.example.feature_todo.viewmodel.TodoViewModel
 import com.example.model_todo.response.Todo
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -34,21 +36,36 @@ class EditFragment : Fragment() {
         _binding = it
         initButtons()
         initViews()
+        initObservers()
         getTodo()
     }.root
 
-    // show current todos info
-    private fun initViews() = with(binding){
-        val todo = getTodo()
+    private fun initObservers()= with(viewModel) {
+        viewState.observe(viewLifecycleOwner){state ->
+            if (state is ViewState.Success) handleSuccess(state.todo)
+            if(state is ViewState.Error) handleError(state.e)
+        }
+    }
+
+    private fun handleError(e: String) {
+        Toast.makeText(context, e, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun handleSuccess(todo: Todo)= with(binding) {
         val editableTitle: Editable = SpannableStringBuilder(todo.title)
         val editableContent: Editable = SpannableStringBuilder(todo.content)
         title.text = editableTitle
         content.text = editableContent
     }
 
+    // show current todos info
+    private fun initViews(){
+        getTodo()
+    }
+
     // get item from ID that was passed
-    private fun getTodo(): Todo {
-        return viewModel.getTodo(args.id.toInt())
+    private fun getTodo() {
+        viewModel.getTodo(args.id)
     }
 
     // initialize buttons
@@ -59,13 +76,13 @@ class EditFragment : Fragment() {
     }
 
     private fun deleteTodo() {
-        val id = args.id.toInt()
+        val id = args.id
         viewModel.deleteSingleTodo(id)
     }
 
     // update todos
     private fun updateTodo() {
-        val id = args.id.toInt()
+        val id = args.id
         val title = binding.title.toString()
         val content = binding.content.toString()
         viewModel.saveEdit(id, title, content)

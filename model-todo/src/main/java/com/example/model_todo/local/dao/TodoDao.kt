@@ -18,7 +18,7 @@ interface TodoDao {
 
     // return item that matches the id passed in
     @Query("SELECT * FROM todo WHERE id IN (:ID)")
-    fun getTodo(ID: Int): Todo
+    suspend fun getTodo(ID: Int): Todo
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(todo: Todo)

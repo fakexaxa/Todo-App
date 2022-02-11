@@ -68,7 +68,8 @@ class ListFragment : Fragment(),TodoViewHolder.OnItemClickListener{
     }
 
     private fun editClicked(todo: Todo) = with(binding){
-
+        val action = ListFragmentDirections.actionListFragmentToEditFragment(todo.id)
+        findNavController().navigate(action)
 
     }
 

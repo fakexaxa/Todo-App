@@ -29,7 +29,7 @@ class TodoRepo(private val todoDao: TodoDao) {
     }
 
     // get a single todos
-    fun getSingleTodo(ID: Int) : Todo{
+    suspend fun getSingleTodo(ID: Int) : Todo{
         return todoDao.getTodo(ID)
     }
 
