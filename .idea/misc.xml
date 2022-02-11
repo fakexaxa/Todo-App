@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="feature_todo/src/main/res/layout/fragment_edit.xml" value="0.125" />
+        <entry key="feature_todo/src/main/res/layout/fragment_list.xml" value="0.19610507246376813" />
+        <entry key="feature_todo/src/main/res/layout/item_todo.xml" value="0.19610507246376813" />
+<<<<<<< Updated upstream
+        <entry key="feature_todo/src/main/res/layout/todo_new.xml" value="0.1" />
+=======
+>>>>>>> Stashed changes
+      </map>
+    </option>
+  </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>

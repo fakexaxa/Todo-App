@@ -23,7 +23,7 @@
             android:id="@+id/action_edit_fragment_to_listFragment"
             app:destination="@id/listFragment" />
         <argument
-            android:name="ID"
+            android:name="id"
             app:argType="string" />
     </fragment>
 </navigation>
