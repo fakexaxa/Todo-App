@@ -1,7 +1,8 @@
 plugins {
     id("com.android.dynamic-feature")
     id("org.jetbrains.kotlin.android")
-
+    id ("androidx.navigation.safeargs.kotlin")
+    kotlin("kapt")
 }
 
 android {

@@ -1,9 +1,6 @@
 package com.example.model_todo.local.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.example.model_todo.response.Todo
 import kotlinx.coroutines.flow.Flow
 
@@ -23,4 +20,7 @@ interface TodoDao {
 
     @Query("DELETE FROM todo")
     suspend fun deleteAll()
+
+    @Delete
+    suspend fun delete(todo: Todo)
 }
