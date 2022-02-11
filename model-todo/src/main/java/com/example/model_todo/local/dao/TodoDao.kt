@@ -27,4 +27,9 @@ interface TodoDao {
 
     @Query("DELETE FROM todo")
     suspend fun deleteAll()
+
+    // query to update to do
+    @Query("UPDATE todo SET id = :ID, title = :title, content = :content WHERE id = :ID")
+    suspend fun updateTodo(ID: Int, title: String, content: String)
+
 }

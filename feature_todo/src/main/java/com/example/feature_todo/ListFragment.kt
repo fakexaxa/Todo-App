@@ -50,6 +50,7 @@ class ListFragment : Fragment() {
 
     private fun editClicked(todo: Todo) = with(binding){
         // do something...
+
     }
 
     private fun todoClicked(todo: Todo) {

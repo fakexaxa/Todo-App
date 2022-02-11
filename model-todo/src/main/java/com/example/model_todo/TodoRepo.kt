@@ -30,4 +30,10 @@ class TodoRepo(private val todoDao: TodoDao) {
         return todoDao.getTodo(ID)
     }
 
+    // update todo
+    suspend fun updateTodo(ID: Int, title: String, content: String){
+        todoDao.updateTodo(ID, title,content)
+
+    }
+
 }

@@ -42,7 +42,15 @@ class TodoViewModel(app: Application) : AndroidViewModel(app) {
         filterFlow.value = option
     }
 
-    fun closeEdit() {
-        TODO("Not yet implemented")
+    fun getTodo(ID: Int): Todo {
+        return todoRepo.getSingleTodo(ID)
     }
+
+    // update todo
+    fun saveEdit(ID: Int, title: String, content: String) {
+        viewModelScope.launch {
+            todoRepo.updateTodo(ID, title, content)
+        }
+    }
+
 }

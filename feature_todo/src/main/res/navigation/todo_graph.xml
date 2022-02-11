@@ -20,7 +20,7 @@
         android:label="fragment_list"
         tools:layout="@layout/fragment_edit" >
         <action
-            android:id="@+id/action_todo_graph_to_listFragment"
+            android:id="@+id/action_edit_fragment_to_listFragment"
             app:destination="@id/listFragment" />
         <argument
             android:name="ID"
