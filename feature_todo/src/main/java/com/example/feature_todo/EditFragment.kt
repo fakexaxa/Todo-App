@@ -41,12 +41,16 @@ class EditFragment : Fragment() {
     // initialize buttons
     private fun initButtons() = with(binding){
         close.setOnClickListener{closeEdit()}
-        delete.setOnClickListener{println("delete is pressed")}
-        checkbox.setOnClickListener{println("checkbox is pressed")}
+        delete.setOnClickListener{deleteTodo()}
         save.setOnClickListener{updateTodo()}
     }
 
-    // update todo
+    private fun deleteTodo() {
+        val id = args.iD.toInt()
+        viewModel.deleteSingleTodo(id)
+    }
+
+    // update todos
     private fun updateTodo() {
         val id = args.iD.toInt()
         val title = binding.title.toString()

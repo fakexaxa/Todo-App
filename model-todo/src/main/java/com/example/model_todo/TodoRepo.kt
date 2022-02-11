@@ -25,7 +25,7 @@ class TodoRepo(private val todoDao: TodoDao) {
         todoDao.insert(todo)
     }
 
-    // get a single todo
+    // get a single todos
     fun getSingleTodo(ID: Int) : Todo{
         return todoDao.getTodo(ID)
     }
@@ -34,6 +34,10 @@ class TodoRepo(private val todoDao: TodoDao) {
     suspend fun updateTodo(ID: Int, title: String, content: String){
         todoDao.updateTodo(ID, title,content)
 
+    }
+
+    suspend fun deleteSingleTodo(id: Int) {
+        todoDao.deleteTodo(id)
     }
 
 }

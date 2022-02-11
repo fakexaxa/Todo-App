@@ -6,6 +6,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.model_todo.response.Todo
 import kotlinx.coroutines.flow.Flow
+import retrofit2.http.DELETE
 
 @Dao
 interface TodoDao {
@@ -31,5 +32,10 @@ interface TodoDao {
     // query to update to do
     @Query("UPDATE todo SET id = :ID, title = :title, content = :content WHERE id = :ID")
     suspend fun updateTodo(ID: Int, title: String, content: String)
+
+    @Query("DELETE FROM todo WHERE id IN (:id)")
+    suspend fun deleteTodo(id: Int)
+
+
 
 }
