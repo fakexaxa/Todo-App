@@ -1,4 +1,4 @@
-package com.example.feature_todo
+package com.example.feature_todo.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

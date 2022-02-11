@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/listFragment"
-        android:name="com.example.feature_todo.ListFragment"
+        android:name="com.example.feature_todo.fragments.ListFragment"
         android:label="fragment_list"
         tools:layout="@layout/fragment_list">
         <action
