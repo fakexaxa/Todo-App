@@ -5,4 +5,9 @@
     <string name="all">All</string>
     <string name="edit">Edit</string>
     <string name="add">Add</string>
+    <string name="close_detail_page">close detail page</string>
+    <string name="delete_todo">delete todo</string>
+    <string name="title">Title</string>
+    <string name="content">Content</string>
+    <string name="save_btn">save btn</string>
 </resources>
