@@ -1,10 +1,8 @@
 package com.example.feature_todo
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.asLiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
+import com.example.feature_todo.util.ViewState
 import com.example.model_todo.TodoRepo
 import com.example.model_todo.local.TodoDatabase
 import com.example.model_todo.response.Todo
@@ -16,6 +14,8 @@ import kotlinx.coroutines.launch
 
 @ExperimentalCoroutinesApi
 class TodoViewModel(app: Application) : AndroidViewModel(app) {
+    private val _viewState = MutableLiveData<ViewState>()
+    val viewState : LiveData<ViewState> get() = _viewState
 
     private val todoRepo by lazy {
         TodoRepo(TodoDatabase.getDatabase(app, viewModelScope).todoDao())
@@ -40,5 +40,33 @@ class TodoViewModel(app: Application) : AndroidViewModel(app) {
 
     fun updateFilter(option: FilterOption) {
         filterFlow.value = option
+    }
+    fun getTodo(ID: Int){
+        viewModelScope.launch {
+            val state = try {
+                // get favorite items
+                val result = todoRepo.getSingleTodo(ID)
+
+                // if success add favorites to state
+                _viewState.value = ViewState.Success(result)
+            } catch (ex: Exception) {
+                // if not success return err msg
+                _viewState.value = ViewState.Error(ex.message ?: "Something went wrong")
+            }
+        }
+    }
+
+
+    // update todos
+    fun saveEdit(ID: Int, title: String, content: String) {
+        viewModelScope.launch {
+            todoRepo.updateTodo(ID, title, content)
+        }
+    }
+
+    fun deleteSingleTodo(id: Int) {
+        viewModelScope.launch {
+            todoRepo.deleteSingleTodo(id)
+        }
     }
 }
