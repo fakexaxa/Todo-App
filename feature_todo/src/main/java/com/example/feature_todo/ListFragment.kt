@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.feature_todo.adapter.TodoAdapter
 import com.example.feature_todo.databinding.FragmentListBinding
 import com.example.model_todo.response.Todo
@@ -49,7 +50,9 @@ class ListFragment : Fragment() {
     }
 
     private fun editClicked(todo: Todo) {
-        // do something...
+        val action =
+            ListFragmentDirections.actionListFragmentToEditFragment(todo.id)
+        findNavController().navigate(action)
     }
 
     private fun todoClicked(todo: Todo) {

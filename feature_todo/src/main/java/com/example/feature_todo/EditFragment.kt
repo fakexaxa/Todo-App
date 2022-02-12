@@ -13,7 +13,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.feature_todo.databinding.FragmentEditBinding
 import com.example.feature_todo.util.ViewState
-import com.example.feature_todo.viewmodel.TodoViewModel
 import com.example.model_todo.response.Todo
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
@@ -25,8 +24,6 @@ class EditFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewModel by viewModels<TodoViewModel>()
     private val args by navArgs<EditFragmentArgs>()
-    val TAG = "edit"
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -95,7 +92,6 @@ class EditFragment : Fragment() {
         val id = args.id
         val title = binding.title.text.toString()
         val content = binding.content.text.toString()
-        Log.e(TAG, "updateTodo: $id \n $title \n $context", )
 
         viewModel.saveEdit(id, title, content)
         closeEdit()
