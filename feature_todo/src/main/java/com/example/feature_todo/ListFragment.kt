@@ -51,7 +51,7 @@ class ListFragment : Fragment() {
 
     private fun editClicked(todo: Todo) {
         val action =
-            ListFragmentDirections.actionListFragmentToEditFragment(todo.id)
+            ListFragmentDirections.actionListFragmentToEditFragment2(todo.id)
         findNavController().navigate(action)
     }
 

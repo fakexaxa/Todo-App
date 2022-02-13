@@ -100,7 +100,7 @@ class EditFragment : Fragment() {
     // go back to main page
     private fun closeEdit() {
         val action =
-            EditFragmentDirections.actionEditFragmentToListFragment()
+            EditFragmentDirections.actionEditFragment2ToListFragment()
         findNavController().navigate(action)
     }
 }
