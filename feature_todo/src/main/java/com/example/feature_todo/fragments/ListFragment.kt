@@ -77,7 +77,7 @@ class ListFragment : Fragment(){
 
         val swipeCallBack= object: SwipeDeleteCallback(){
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val position = viewHolder.bindingAdapterPosition
+                val position = viewHolder.adapterPosition
                 todoViewModel.delete(todoAdapter.currentList[position])
                 binding.rvTodos.adapter?.notifyItemChanged(position)
             }

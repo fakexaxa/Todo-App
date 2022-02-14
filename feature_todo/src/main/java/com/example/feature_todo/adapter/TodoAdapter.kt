@@ -16,7 +16,7 @@ class TodoAdapter(
 
     override fun onCreateViewHolder(
         parent: ViewGroup, viewType: Int
-    ) = TodoViewHolder.newInstance(parent, editClicked,todoClicked).listen { position, _ ->
+    ) = TodoViewHolder.newInstance(parent, editClicked).listen { position, _ ->
         todoClicked(getItem(position))
     }
 
