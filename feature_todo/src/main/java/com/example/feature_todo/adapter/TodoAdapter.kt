@@ -8,8 +8,11 @@ import com.example.model_todo.response.Todo
 import com.example.todo.util.listen
 
 class TodoAdapter(
-    private val editClicked: (Todo) -> Unit, private val todoClicked: (Todo) -> Unit
+    private val editClicked: (Todo) -> Unit,
+    private val todoClicked: (Todo) -> Unit
+
 ) : ListAdapter<Todo, TodoViewHolder>(TodoDiffUtil) {
+
 
     override fun onCreateViewHolder(
         parent: ViewGroup, viewType: Int
