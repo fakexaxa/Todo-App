@@ -58,9 +58,9 @@ class TodoViewModel(app: Application) : AndroidViewModel(app) {
 
 
     // update todos
-    fun saveEdit(ID: Int, title: String, content: String) {
+    fun saveEdit(ID: Int, title: String, content: String, completed: Boolean) {
         viewModelScope.launch {
-            todoRepo.updateTodo(ID, title, content)
+            todoRepo.updateTodo(ID, title, content, completed)
         }
     }
 
@@ -69,4 +69,5 @@ class TodoViewModel(app: Application) : AndroidViewModel(app) {
             todoRepo.deleteSingleTodo(id)
         }
     }
+
 }

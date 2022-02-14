@@ -15,6 +15,7 @@ import com.example.feature_todo.databinding.FragmentEditBinding
 import com.example.feature_todo.util.ViewState
 import com.example.model_todo.response.Todo
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlin.properties.Delegates
 
 
 @ExperimentalCoroutinesApi
@@ -59,6 +60,7 @@ class EditFragment : Fragment() {
 
         title.text = editableTitle
         content.text = editableContent
+        completed.isChecked = todo.isComplete
 
     }
 
@@ -92,8 +94,9 @@ class EditFragment : Fragment() {
         val id = args.id
         val title = binding.title.text.toString()
         val content = binding.content.text.toString()
+        val isChecked = binding.completed.isChecked
 
-        viewModel.saveEdit(id, title, content)
+        viewModel.saveEdit(id, title, content, isChecked)
         closeEdit()
     }
 
