@@ -3,7 +3,7 @@ package com.example.feature_todo.adapter
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 
-abstract class SwipeDeleteCallback (): ItemTouchHelper.Callback(){
+abstract class SwipeDeleteCallback: ItemTouchHelper.Callback(){
 
     override fun getMovementFlags(
         recyclerView: RecyclerView,

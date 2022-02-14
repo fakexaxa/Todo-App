@@ -4,11 +4,12 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.example.feature_todo.fragments.NewTodo">
+    tools:context="com.example.feature_todo.fragments.NewTodo"
+    >
 
     <EditText
         android:id="@+id/et_title"
-        android:hint="@string/add_todo"
+        android:hint="add todo"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -16,7 +17,7 @@
 
     <EditText
         android:id="@+id/et_description"
-        android:hint="@string/add_description"
+        android:hint="add description"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/et_title"
@@ -26,7 +27,7 @@
         android:id="@+id/btn_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/add_todo"
+        android:text="add todo"
         app:layout_constraintTop_toBottomOf="@id/et_description"
         android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
