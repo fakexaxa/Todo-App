@@ -3,7 +3,6 @@ package com.example.feature_todo
 import android.os.Bundle
 import android.text.Editable
 import android.text.SpannableStringBuilder
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
@@ -15,7 +14,6 @@ import com.example.feature_todo.databinding.FragmentEditBinding
 import com.example.feature_todo.util.ViewState
 import com.example.model_todo.response.Todo
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlin.properties.Delegates
 
 
 @ExperimentalCoroutinesApi
@@ -61,7 +59,6 @@ class EditFragment : Fragment() {
         title.text = editableTitle
         content.text = editableContent
         completed.isChecked = todo.isComplete
-
     }
 
     // show current todos info
