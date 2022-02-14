@@ -17,5 +17,5 @@ rootProject.name = "Todo"
 enableFeaturePreview("VERSION_CATALOGS")
 
 include(
-    ":app", ":feature_todo", ":model-todo"
+    ":app", ":feature_todo", ":model-todo", ":feature_details", ":feature_edit"
 )

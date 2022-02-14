@@ -8,13 +8,33 @@
         android:id="@+id/listFragment"
         android:name="com.example.feature_todo.fragments.ListFragment"
         android:label="fragment_list"
-        tools:layout="@layout/fragment_list" >
+        tools:layout="@layout/fragment_list">
         <action
             android:id="@+id/action_listFragment_to_editFragment2"
             app:destination="@id/editFragment2" />
         <action
             android:id="@+id/action_listFragment_to_newTodo"
             app:destination="@id/newTodo" />
+        <action
+            android:id="@+id/action_listFragment_to_editFragment"
+            app:destination="@id/editFragment" />
+        <action
+            android:id="@+id/action_listFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/editFragment"
+        android:name="com.example.feature_todo.fragments.EditFragment"
+        android:label="fragment_list"
+        tools:layout="@layout/fragment_edit" >
+        <action
+            android:id="@+id/action_edit_fragment_to_listFragment"
+            app:destination="@id/listFragment" />
+        <argument
+            android:name="id"
+            app:argType="integer" />
+
     </fragment>
     <fragment
         android:id="@+id/editFragment2"
@@ -32,8 +52,21 @@
         android:name="com.example.feature_todo.fragments.NewTodo"
         android:label="todo_new"
         tools:layout="@layout/todo_new" >
+
         <action
             android:id="@+id/action_newTodo_to_listFragment"
             app:destination="@id/listFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.feature_todo.fragments.DetailFragment"
+        android:label="DetailFragment" >
+        <action
+            android:id="@+id/action_detailFragment_to_listFragment"
+            app:destination="@id/listFragment"
+            app:enterAnim="@anim/slide_in_down" />
+        <argument
+            android:name="id"
+            app:argType="integer" />
     </fragment>
 </navigation>

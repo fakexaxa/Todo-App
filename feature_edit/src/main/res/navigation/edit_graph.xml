@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/editFragment">
+
+    <fragment
+        android:id="@+id/editFragment"
+        android:name="com.example.feature_edit.view.EditFragment"
+        android:label="EditFragment"
+        tools:layout="@layout/fragment_edit">
+        <argument
+            android:name="todoId"
+            app:argType="integer" />
+    </fragment>
+
+</navigation>

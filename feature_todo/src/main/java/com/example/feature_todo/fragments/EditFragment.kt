@@ -3,6 +3,7 @@ package com.example.feature_todo.fragments
 import android.os.Bundle
 import android.text.Editable
 import android.text.SpannableStringBuilder
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
@@ -10,9 +11,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.feature_todo.TodoViewModel
 import com.example.feature_todo.databinding.FragmentEditBinding
 import com.example.feature_todo.util.ViewState
+import com.example.feature_todo.viewmodel.TodoViewModel
 import com.example.model_todo.response.Todo
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
@@ -24,6 +25,7 @@ class EditFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewModel by viewModels<TodoViewModel>()
     private val args by navArgs<EditFragmentArgs>()
+    val TAG = "edit"
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -84,7 +86,6 @@ class EditFragment : Fragment() {
         val id = args.id
         viewModel.deleteSingleTodo(id)
         closeEdit()
-
     }
 
     // update todos
@@ -101,7 +102,7 @@ class EditFragment : Fragment() {
     // go back to main page
     private fun closeEdit() {
         val action =
-            EditFragmentDirections.actionEditFragment2ToListFragment()
+            EditFragmentDirections.actionEditFragmentToListFragment()
         findNavController().navigate(action)
     }
 }

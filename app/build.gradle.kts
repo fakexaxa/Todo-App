@@ -26,6 +26,9 @@ android {
             )
         }
     }
+    buildFeatures {
+        viewBinding = true
+    }
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -37,6 +40,8 @@ android {
     }
 
     dynamicFeatures += setOf(":feature_todo")
+    dynamicFeatures += setOf(":feature_details")
+    dynamicFeatures += setOf(":feature_edit")
 
 }
 
