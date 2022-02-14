@@ -21,6 +21,17 @@ interface TodoDao {
     @Query("DELETE FROM todo")
     suspend fun deleteAll()
 
+    // query to update to do
+    @Query("UPDATE todo SET id = :ID, title = :title, content = :content, isComplete = :completed WHERE id = :ID")
+    suspend fun updateTodo(ID: Int, title: String, content: String, completed: Boolean)
+
+    @Query("DELETE FROM todo WHERE id IN (:id)")
+    suspend fun deleteTodo(id: Int)
+
     @Delete
     suspend fun delete(todo: Todo)
+    // return item that matches the id passed in
+    @Query("SELECT * FROM todo WHERE id IN (:ID)")
+    suspend fun getTodo(ID: Int): Todo
+
 }
