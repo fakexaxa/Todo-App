@@ -23,11 +23,11 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 
 @ExperimentalCoroutinesApi
-class ListFragment : Fragment(),TodoViewHolder.OnItemClickListener {
+class ListFragment : Fragment(),TodoViewHolder.OnItemClickListener{
 
     private var _binding: FragmentListBinding? = null
     private val binding get() = _binding!!
-    private val todoAdapter by lazy { TodoAdapter(::editClicked, ::todoClicked, this) }
+    private val todoAdapter by lazy { TodoAdapter(::editClicked, ::todoClicked,this) }
     private val todoViewModel by activityViewModels<TodoViewModel>()
 
 
@@ -51,8 +51,6 @@ class ListFragment : Fragment(),TodoViewHolder.OnItemClickListener {
         super.onDestroyView()
         _binding = null
     }
-
-
     private fun initViews() = with(binding) {
         rvTodos.adapter = todoAdapter
 
@@ -73,13 +71,14 @@ class ListFragment : Fragment(),TodoViewHolder.OnItemClickListener {
         val action = ListFragmentDirections.actionListFragmentToEditFragment(todo.id)
         findNavController().navigate(action)
 
-    }
 
-    override fun todoClicked(todo: Todo) {
-        val action = ListFragmentDirections.actionListFragmentToDetailFragment(todo.id)
-        findNavController().navigate(action)
     }
+    private fun todoClicked(todo: Todo) {
 
+        binding.toolbar.setOnClickListener {
+            deleteTodo(todo)
+        }
+    }
 
     private fun swipeDeleteCallback(): SwipeDeleteCallback {
 
@@ -93,11 +92,24 @@ class ListFragment : Fragment(),TodoViewHolder.OnItemClickListener {
         return swipeCallBack
     }
 
-    override fun onItemClick(isSelected: Boolean, todo: Todo) {
-        if (isSelected) {
-            binding.toolbar.setOnClickListener {
-                todoViewModel.delete(todo)
-            }
-        }
+    override fun clickedTodo(todo: Todo) {
+        val action = ListFragmentDirections.actionListFragmentToDetailFragment(todo.id)
+        findNavController().navigate(action)
     }
+    private fun deleteTodo(todo: Todo){
+        val builder= AlertDialog.Builder(activity)
+        builder.setTitle("Confirm Delete")
+        builder.setMessage("Are you sure you want to delete this todo?")
+
+        builder.setPositiveButton("Yes") { dialog, _ ->
+            todoViewModel.delete(todo)
+            dialog.cancel()
+        }
+        builder.setNegativeButton("No") { dialog, _ ->
+            dialog.cancel()
+        }
+        val alert: AlertDialog=builder.create()
+        alert.show()
+    }
+
 }
