@@ -16,11 +16,10 @@ class TodoViewHolder(
     private val listener: OnItemClickListener
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    var isSelected = true
+
 
     interface OnItemClickListener {
-        fun onItemClick(isSelected: Boolean,todo: Todo)
-        fun todoClicked(todo: Todo)
+        fun clickedTodo(todo: Todo)
     }
     fun bindTodo(todo: Todo) = with(binding) {
         tvTitle.text = todo.title
@@ -28,12 +27,9 @@ class TodoViewHolder(
         rbIsComplete.setBackgroundColor(if (todo.isComplete) Color.GREEN else Color.LTGRAY)
         color.setBackgroundColor(todo.color)
         tvEdit.setOnClickListener { editClicked(todo) }
-    }.also { itemView.setOnClickListener {
-        listener.onItemClick(isSelected,todo)
-        isSelected=!isSelected
-    }
-        itemView.setOnLongClickListener {
-            listener.todoClicked(todo)
+    }.also {
+             itemView.setOnLongClickListener {
+            listener.clickedTodo(todo)
             true
         }
  }
