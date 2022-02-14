@@ -9,9 +9,11 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.feature_todo.R
 import com.example.feature_todo.databinding.TodoNewBinding
-import com.example.feature_todo.viewmodel.TodoViewModel
+import com.example.feature_todo.TodoViewModel
 import com.example.model_todo.response.Todo
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
+@ExperimentalCoroutinesApi
 class NewTodo : Fragment(R.layout.todo_new) {
 
     private var _binding: TodoNewBinding? = null
@@ -33,7 +35,6 @@ class NewTodo : Fragment(R.layout.todo_new) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         addTodos()
     }
 
