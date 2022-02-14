@@ -4,11 +4,9 @@ import android.app.AlertDialog
 import android.content.DialogInterface
 import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.text.SpannableStringBuilder
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
@@ -21,7 +19,7 @@ import com.example.feature_todo.util.ViewState
 import com.example.feature_todo.viewmodel.TodoViewModel
 import com.example.model_todo.response.Todo
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import org.w3c.dom.Text
+
 
 @ExperimentalCoroutinesApi
 class DetailFragment: Fragment() {
@@ -84,7 +82,7 @@ class DetailFragment: Fragment() {
             .setTitle("Delete Confirmation")
             .setMessage("Are you sure you want to delete this item?")
             .setIcon(R.drawable.ic_baseline_priority_high_24)
-            .setPositiveButton(R.string.yes, DialogInterface.OnClickListener { dialog, which ->
+            .setPositiveButton(R.string.yes, DialogInterface.OnClickListener { _, _ ->
                 viewModel.deleteSingleTodo(args.id)
                 closeDetail()
             }).setNegativeButton(R.string.no, null).show()

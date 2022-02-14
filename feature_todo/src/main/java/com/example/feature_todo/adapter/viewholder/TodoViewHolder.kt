@@ -2,12 +2,9 @@ package com.example.feature_todo.adapter.viewholder
 
 import android.graphics.Color
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.feature_todo.databinding.ItemTodoBinding
-import com.example.feature_todo.fragments.DetailFragmentDirections
 import com.example.model_todo.response.Todo
 
 class TodoViewHolder(
