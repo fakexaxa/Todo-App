@@ -15,11 +15,14 @@
         <action
             android:id="@+id/action_listFragment_to_editFragment"
             app:destination="@id/editFragment" />
+        <action
+            android:id="@+id/action_listFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/editFragment"
-        android:name="com.example.feature_todo.EditFragment"
+        android:name="com.example.feature_todo.fragments.EditFragment"
         android:label="fragment_list"
         tools:layout="@layout/fragment_edit" >
         <action
@@ -39,5 +42,17 @@
         <action
             android:id="@+id/action_newTodo_to_listFragment"
             app:destination="@id/listFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.feature_todo.fragments.DetailFragment"
+        android:label="DetailFragment" >
+        <action
+            android:id="@+id/action_detailFragment_to_listFragment"
+            app:destination="@id/listFragment"
+            app:enterAnim="@anim/slide_in_down" />
+        <argument
+            android:name="id"
+            app:argType="integer" />
     </fragment>
 </navigation>

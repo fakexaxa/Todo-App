@@ -30,8 +30,6 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             style="@style/Todo.CardView.Text.Title"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
             app:layout_constraintBottom_toTopOf="@id/tv_description"
             app:layout_constraintEnd_toStartOf="@id/color"
             app:layout_constraintStart_toEndOf="@id/rb_is_complete"
@@ -44,11 +42,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             style="@style/Todo.CardView.Text.Subtile"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
             app:layout_constraintEnd_toStartOf="@id/color"
             app:layout_constraintStart_toEndOf="@id/rb_is_complete"
             app:layout_constraintTop_toBottomOf="@id/tv_title"
@@ -63,11 +57,8 @@
             android:padding="4dp"
             android:text="@string/edit"
             android:textAppearance="?attr/textAppearanceCaption"
-<<<<<<< HEAD
             app:layout_constraintBottom_toBottomOf="@id/tv_title"
-=======
             app:layout_constraintTop_toTopOf="@id/tv_title"
->>>>>>> 53c190635db0773d92d4c98544960f50cfc7f13d
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias=".85"
             app:layout_constraintStart_toStartOf="parent" />

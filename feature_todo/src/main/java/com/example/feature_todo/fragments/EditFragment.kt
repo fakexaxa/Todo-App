@@ -1,4 +1,4 @@
-package com.example.feature_todo
+package com.example.feature_todo.fragments
 
 import android.os.Bundle
 import android.text.Editable

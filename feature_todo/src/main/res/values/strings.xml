@@ -12,4 +12,8 @@
     <string name="save_btn">save btn</string>
     <string name="add_description">add description</string>
     <string name="add_todo">add todo</string>
+    <string name="title">Title</string>
+    <string name="content">This Is Content</string>
+    <string name="yes">yes</string>
+    <string name="no">no</string>
 </resources>
