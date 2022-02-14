@@ -71,7 +71,6 @@ class ListFragment : Fragment(){
         binding.toolbar.setOnClickListener{
             deleteTodo(todo)
         }
-
     }
     private fun swipeDeleteCallback():SwipeDeleteCallback{
 
