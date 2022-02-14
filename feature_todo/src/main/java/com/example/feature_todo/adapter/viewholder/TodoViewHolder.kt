@@ -28,7 +28,7 @@ class TodoViewHolder(
             when (event?.action) {
                 MotionEvent.ACTION_DOWN -> itemView.setBackgroundColor(Color.YELLOW)
                 MotionEvent.ACTION_UP -> itemView.setBackgroundColor(Color.WHITE)
-                MotionEvent.ACTION_UP -> itemView.setBackgroundColor(Color.WHITE)
+                MotionEvent.ACTION_CANCEL -> itemView.setBackgroundColor(Color.WHITE)
             }
             v?.onTouchEvent(event) ?: true
         }
