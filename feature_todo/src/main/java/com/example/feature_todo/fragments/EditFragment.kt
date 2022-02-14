@@ -1,4 +1,4 @@
-package com.example.feature_todo
+package com.example.feature_todo.fragments
 
 import android.os.Bundle
 import android.text.Editable
@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.feature_todo.TodoViewModel
 import com.example.feature_todo.databinding.FragmentEditBinding
 import com.example.feature_todo.util.ViewState
 import com.example.model_todo.response.Todo

@@ -24,7 +24,7 @@ class TodoRepo(private val todoDao: TodoDao) {
     suspend fun insert(todo: Todo) {
         todoDao.insert(todo)
     }
-<<<<<<< HEAD
+
     // get a single todos
     suspend fun getSingleTodo(ID: Int) : Todo{
         return todoDao.getTodo(ID)
@@ -39,10 +39,9 @@ class TodoRepo(private val todoDao: TodoDao) {
     suspend fun deleteSingleTodo(id: Int) {
         todoDao.deleteTodo(id)
     }
-=======
+
     suspend fun deleteTodo(todo: Todo){
         todoDao.delete(todo)
     }
 
->>>>>>> NEW-Shavonne-Michael-Rynn-Branch
 }
