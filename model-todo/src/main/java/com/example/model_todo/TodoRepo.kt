@@ -37,4 +37,5 @@ class TodoRepo(private val todoDao: TodoDao) {
 
     suspend fun deleteSingleTodo(id: Int) {
         todoDao.deleteTodo(id)
+    }
 }
