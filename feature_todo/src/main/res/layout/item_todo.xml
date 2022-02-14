@@ -50,15 +50,13 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_edit"
-            android:width="0dp"
-            android:height="0dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="4dp"
             android:text="@string/edit"
             android:textAppearance="?attr/textAppearanceCaption"
-            app:layout_constraintBottom_toBottomOf="@id/tv_title"
-            app:layout_constraintTop_toTopOf="@id/tv_title"
+            app:layout_constraintBottom_toTopOf="@id/tv_title"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias=".85"
             app:layout_constraintStart_toStartOf="parent" />

@@ -27,7 +27,6 @@ class EditFragment : Fragment() {
     private val args by navArgs<EditFragmentArgs>()
     val TAG = "edit"
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -42,7 +41,7 @@ class EditFragment : Fragment() {
         getTodo()
     }.root
 
-        // watch for changes in state
+    // watch for changes in state
     private fun initObservers()= with(viewModel) {
         viewState.observe(viewLifecycleOwner){state ->
             if (state is ViewState.Success) handleSuccess(state.todo)
@@ -62,7 +61,7 @@ class EditFragment : Fragment() {
 
         title.text = editableTitle
         content.text = editableContent
-
+        completed.isChecked = todo.isComplete
     }
 
     // show current todos info
@@ -87,7 +86,6 @@ class EditFragment : Fragment() {
         val id = args.id
         viewModel.deleteSingleTodo(id)
         closeEdit()
-
     }
 
     // update todos
@@ -95,9 +93,9 @@ class EditFragment : Fragment() {
         val id = args.id
         val title = binding.title.text.toString()
         val content = binding.content.text.toString()
-        Log.e(TAG, "updateTodo: $id \n $title \n $context", )
+        val isChecked = binding.completed.isChecked
 
-        viewModel.saveEdit(id, title, content)
+        viewModel.saveEdit(id, title, content, isChecked)
         closeEdit()
     }
 
