@@ -1,17 +1,12 @@
 package com.example.feature_todo.fragments
-
 import android.app.AlertDialog
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.example.feature_todo.R
 import com.example.feature_todo.adapter.SwipeDeleteCallback
 import com.example.feature_todo.viewmodel.TodoViewModel
 import com.example.feature_todo.adapter.TodoAdapter
@@ -20,7 +15,7 @@ import com.example.feature_todo.databinding.FragmentListBinding
 import com.example.model_todo.response.Todo
 import com.example.model_todo.util.FilterOption
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.launch
+
 
 @ExperimentalCoroutinesApi
 class ListFragment : Fragment(),TodoViewHolder.OnItemClickListener{
@@ -70,11 +65,8 @@ class ListFragment : Fragment(),TodoViewHolder.OnItemClickListener{
     private fun editClicked(todo: Todo) = with(binding) {
         val action = ListFragmentDirections.actionListFragmentToEditFragment(todo.id)
         findNavController().navigate(action)
-
-
     }
     private fun todoClicked(todo: Todo) {
-
         binding.toolbar.setOnClickListener {
             deleteTodo(todo)
         }

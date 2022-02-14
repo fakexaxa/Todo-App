@@ -20,10 +20,6 @@ class NewTodo : Fragment(R.layout.todo_new) {
     private val binding get() = _binding!!
     private val todoViewModel by activityViewModels<TodoViewModel>()
 
-
-
-
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
