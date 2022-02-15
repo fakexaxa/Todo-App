@@ -32,13 +32,14 @@ class NewTodo : Fragment(R.layout.todo_new) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-       addTodos()
+        addTodos()
     }
 
-    private fun addTodos()= with(binding){
+    private fun addTodos() = with(binding) {
 
         btnAdd.setOnClickListener {
-            val todo=Todo(title = etTitle.text.toString(), content = etDescription.text.toString())
+            val todo =
+                Todo(title = etTitle.text.toString(), content = etDescription.text.toString())
             todoViewModel.add(todo)
             val action = NewTodoDirections.actionNewTodoToListFragment()
             findNavController().navigate(action)
