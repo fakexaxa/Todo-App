@@ -10,14 +10,15 @@ import com.example.model_todo.response.Todo
 class TodoViewHolder(
     private val binding: ItemTodoBinding,
     private val editClicked: (Todo) -> Unit,
-    private val listener: OnItemClickListener
+    private val todoClicked: (Todo) -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
-
 
 
     interface OnItemClickListener {
         fun clickedTodo(todo: Todo)
+        fun editClicked(todo: Todo)
     }
+
     fun bindTodo(todo: Todo) = with(binding) {
         tvTitle.text = todo.title
         tvDescription.text = todo.content
@@ -25,15 +26,19 @@ class TodoViewHolder(
         color.setBackgroundColor(todo.color)
         tvEdit.setOnClickListener { editClicked(todo) }
     }.also {
-             itemView.setOnLongClickListener {
-            listener.clickedTodo(todo)
+        itemView.setOnLongClickListener {
+            todoClicked(todo)
             true
         }
- }
+    }
 
     companion object {
-        fun newInstance(parent: ViewGroup, editClicked: (Todo) -> Unit,listener: OnItemClickListener) = ItemTodoBinding.inflate(
+        fun newInstance(
+            parent: ViewGroup,
+            editClicked: (Todo) -> Unit,
+            todoClicked: (Todo) -> Unit
+        ) = ItemTodoBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
-        ).let { binding -> TodoViewHolder(binding, editClicked,listener) }
+        ).let { binding -> TodoViewHolder(binding, editClicked, todoClicked) }
     }
 }

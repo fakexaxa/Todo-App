@@ -23,11 +23,11 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 
 @ExperimentalCoroutinesApi
-class ListFragment : Fragment(),TodoViewHolder.OnItemClickListener{
+class ListFragment : Fragment(){
 
     private var _binding: FragmentListBinding? = null
     private val binding get() = _binding!!
-    private val todoAdapter by lazy { TodoAdapter(::editClicked, ::todoClicked,this) }
+    private val todoAdapter by lazy { TodoAdapter(::editClicked, ::todoClicked) }
     private val todoViewModel by activityViewModels<TodoViewModel>()
 
 
@@ -92,7 +92,7 @@ class ListFragment : Fragment(),TodoViewHolder.OnItemClickListener{
         return swipeCallBack
     }
 
-    override fun clickedTodo(todo: Todo) {
+     fun clickedTodo(todo: Todo) {
         val action = ListFragmentDirections.actionListFragmentToDetailFragment(todo.id)
         findNavController().navigate(action)
     }
