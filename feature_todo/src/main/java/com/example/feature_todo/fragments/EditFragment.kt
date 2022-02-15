@@ -3,7 +3,6 @@ package com.example.feature_todo.fragments
 import android.os.Bundle
 import android.text.Editable
 import android.text.SpannableStringBuilder
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
@@ -25,7 +24,6 @@ class EditFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewModel by viewModels<TodoViewModel>()
     private val args by navArgs<EditFragmentArgs>()
-    val TAG = "edit"
 
     override fun onCreateView(
         inflater: LayoutInflater,

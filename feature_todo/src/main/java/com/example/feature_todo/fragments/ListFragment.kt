@@ -1,33 +1,29 @@
 package com.example.feature_todo.fragments
-
 import android.app.AlertDialog
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.example.feature_todo.R
 import com.example.feature_todo.adapter.SwipeDeleteCallback
 import com.example.feature_todo.viewmodel.TodoViewModel
 import com.example.feature_todo.adapter.TodoAdapter
-import com.example.feature_todo.adapter.viewholder.TodoViewHolder
 import com.example.feature_todo.databinding.FragmentListBinding
 import com.example.model_todo.response.Todo
 import com.example.model_todo.util.FilterOption
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.launch
+
 
 @ExperimentalCoroutinesApi
 class ListFragment : Fragment(){
 
     private var _binding: FragmentListBinding? = null
     private val binding get() = _binding!!
-    private val todoAdapter by lazy { TodoAdapter(::editClicked, ::todoClicked) }
+    private val todoAdapter by lazy { TodoAdapter(::editClicked, ::todoClicked, ::todoLongClicked) }
+
+
     private val todoViewModel by activityViewModels<TodoViewModel>()
 
 
@@ -70,14 +66,15 @@ class ListFragment : Fragment(){
     private fun editClicked(todo: Todo) = with(binding) {
         val action = ListFragmentDirections.actionListFragmentToEditFragment(todo.id)
         findNavController().navigate(action)
-
-
     }
     private fun todoClicked(todo: Todo) {
-
         binding.toolbar.setOnClickListener {
             deleteTodo(todo)
         }
+    }
+    private fun todoLongClicked(todo: Todo) {
+        val action = ListFragmentDirections.actionListFragmentToDetailFragment(todo.id)
+        findNavController().navigate(action)
     }
 
     private fun swipeDeleteCallback(): SwipeDeleteCallback {
@@ -92,10 +89,6 @@ class ListFragment : Fragment(){
         return swipeCallBack
     }
 
-     fun clickedTodo(todo: Todo) {
-        val action = ListFragmentDirections.actionListFragmentToDetailFragment(todo.id)
-        findNavController().navigate(action)
-    }
     private fun deleteTodo(todo: Todo){
         val builder= AlertDialog.Builder(activity)
         builder.setTitle("Confirm Delete")
@@ -111,5 +104,4 @@ class ListFragment : Fragment(){
         val alert: AlertDialog=builder.create()
         alert.show()
     }
-
 }
