@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.feature_todo.adapter.SwipeDeleteCallback
 import com.example.feature_todo.viewmodel.TodoViewModel
 import com.example.feature_todo.adapter.TodoAdapter
-import com.example.feature_todo.adapter.viewholder.TodoViewHolder
 import com.example.feature_todo.databinding.FragmentListBinding
 import com.example.model_todo.response.Todo
 import com.example.model_todo.util.FilterOption
@@ -18,11 +17,13 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 
 @ExperimentalCoroutinesApi
-class ListFragment : Fragment(),TodoViewHolder.OnItemClickListener{
+class ListFragment : Fragment(){
 
     private var _binding: FragmentListBinding? = null
     private val binding get() = _binding!!
-    private val todoAdapter by lazy { TodoAdapter(::editClicked, ::todoClicked,this) }
+    private val todoAdapter by lazy { TodoAdapter(::editClicked, ::todoClicked, ::todoLongClicked) }
+
+
     private val todoViewModel by activityViewModels<TodoViewModel>()
 
 
@@ -71,6 +72,10 @@ class ListFragment : Fragment(),TodoViewHolder.OnItemClickListener{
             deleteTodo(todo)
         }
     }
+    private fun todoLongClicked(todo: Todo) {
+        val action = ListFragmentDirections.actionListFragmentToDetailFragment(todo.id)
+        findNavController().navigate(action)
+    }
 
     private fun swipeDeleteCallback(): SwipeDeleteCallback {
 
@@ -84,10 +89,6 @@ class ListFragment : Fragment(),TodoViewHolder.OnItemClickListener{
         return swipeCallBack
     }
 
-    override fun clickedTodo(todo: Todo) {
-        val action = ListFragmentDirections.actionListFragmentToDetailFragment(todo.id)
-        findNavController().navigate(action)
-    }
     private fun deleteTodo(todo: Todo){
         val builder= AlertDialog.Builder(activity)
         builder.setTitle("Confirm Delete")
@@ -103,5 +104,4 @@ class ListFragment : Fragment(),TodoViewHolder.OnItemClickListener{
         val alert: AlertDialog=builder.create()
         alert.show()
     }
-
 }

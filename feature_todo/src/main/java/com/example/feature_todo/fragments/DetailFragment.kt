@@ -37,7 +37,6 @@ class DetailFragment: Fragment() {
     ).also {
         _binding = it
     }.root
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initObservers()
@@ -50,7 +49,6 @@ class DetailFragment: Fragment() {
             if(state is ViewState.Error) handleError(state.e)
         }
     }
-
     private fun handleSuccess(todo: Todo) = with(binding) {
         title.text = todo.title
         content.text = todo.content
@@ -68,13 +66,11 @@ class DetailFragment: Fragment() {
     private fun handleError(e: String) {
         Toast.makeText(context, e, Toast.LENGTH_LONG).show()
     }
-
     private fun initViews() {
         viewModel.getTodo(args.id)
         binding.delete.setOnClickListener { deleteTodo() }
         binding.close.setOnClickListener { closeDetail() }
     }
-
     private fun deleteTodo() {
         AlertDialog.Builder(context)
             .setTitle("Delete Confirmation")
@@ -85,7 +81,6 @@ class DetailFragment: Fragment() {
                 closeDetail()
             }.setNegativeButton(R.string.no, null).show()
     }
-
     private fun closeDetail() {
         val action = DetailFragmentDirections.actionDetailFragmentToListFragment()
         findNavController().navigate(action)
